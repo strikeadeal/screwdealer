@@ -64,6 +64,16 @@ test("two iPhones can create, join, play a round, and recover a session", async 
   const dealer = await pageWithButton(players, /Deal the card/);
   await dealer.getByRole("button", { name: "Deal the card" }).click();
   const guesser = await pageWithButton(players, /Lock in/);
+  await guesser.locator(".card-back").evaluate(async (card) => {
+    const match = getComputedStyle(card).backgroundImage.match(/url\(["']?(.*?)["']?\)/);
+    if (!match) throw new Error("Card back image is not configured");
+    await new Promise<void>((resolve, reject) => {
+      const image = new Image();
+      image.onload = () => resolve();
+      image.onerror = () => reject(new Error("Card back image failed to load"));
+      image.src = match[1];
+    });
+  });
   if (process.env.VISUAL_QA_PATH) await guesser.screenshot({ path: process.env.VISUAL_QA_PATH });
   await guesser.getByRole("button", { name: "Choose 7" }).click();
   await guesser.getByRole("button", { name: "Lock in 7" }).click();

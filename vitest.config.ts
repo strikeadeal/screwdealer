@@ -6,7 +6,7 @@ export default defineConfig({
     environmentOptions: { jsdom: { url: "http://localhost/" } },
     globals: true,
     setupFiles: ["./test/setup.ts"],
-    include: ["shared/**/*.test.ts", "worker/**/*.test.ts", "src/**/*.test.ts", "src/**/*.test.tsx"],
+    include: ["shared/**/*.test.ts", "worker/**/*.test.ts", "src/**/*.test.ts", "src/**/*.test.tsx", "test/**/*.test.ts"],
     exclude: ["worker/**/*.integration.test.ts"],
   },
 });

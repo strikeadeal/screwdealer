@@ -2,7 +2,7 @@
   "compilerOptions": {
     "composite": true,
     "target": "ES2023",
-    "lib": ["ES2023"],
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
     "types": ["node"],
     "skipLibCheck": true,
     "strict": true,
@@ -10,5 +10,5 @@
     "moduleResolution": "Bundler",
     "noEmit": true
   },
-  "include": ["vite.config.ts", "vitest.config.ts", "vitest.worker.config.ts", "playwright.config.ts", "eslint.config.js"]
+  "include": ["vite.config.ts", "vitest.config.ts", "vitest.worker.config.ts", "playwright.config.ts", "eslint.config.js", "test/**/*.ts"]
 }
